@@ -1,5 +1,6 @@
 // Libraries
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {StaticRouter} from 'react-router';
 import {renderToString} from 'react-dom/server';
 
