@@ -7,7 +7,7 @@ import path    from 'path';
 import {
   renderPage,
   renderDevPage
-} from './ssr';
+} from 'server/ssr';
 
 const PROD = process.env.NODE_ENV === 'production';
 
@@ -17,7 +17,7 @@ if (PROD) {
   app.use('/static', express.static('build'));
   app.get('*', renderPage);
 } else {
-  const HMR = require('./hmr.js').default;
+  const HMR = require('server/hmr.js').default;
   // Hot Module Reloading
   HMR(app);
   app.get('*', renderDevPage);

@@ -7,10 +7,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 const root = process.cwd();
 const src  = path.join(root, 'src');
 const build = path.join(root, 'build');
-const universal = path.join(src, 'universal');
-const server = path.join(src, 'server');
+const universalSrc = path.join(src, 'universal');
+const serverSrc = path.join(src, 'server');
 
-const serverInclude = [server, universal];
+const serverInclude = [serverSrc, universalSrc];
 
 export default {
   context: src,
@@ -27,7 +27,7 @@ export default {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: [src, 'node_modules']
+    modules: [src, universalSrc, 'node_modules']
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),

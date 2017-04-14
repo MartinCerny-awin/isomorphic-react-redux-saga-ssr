@@ -12,7 +12,7 @@ import createStore from 'universal/redux/createStore.js';
 import createHistory from 'history/createMemoryHistory'
 
 // Components
-import Html from './Html';
+import Html from 'server/Html';
 
 function renderApp(url, res, store, assets) {
   const context = {};

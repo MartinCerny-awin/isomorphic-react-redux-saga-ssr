@@ -27,9 +27,9 @@ function asyncRoute(getComponent) {
 }
 
 export const Home = asyncRoute(() => {
-  return System.import('../components/Home/Home');
+  return System.import('components/Home/Home');
 });
 
 export const Counter = asyncRoute(() => {
-  return System.import('../modules/counter/containers/Counter/CounterContainer');
+  return System.import('modules/counter/containers/Counter/CounterContainer');
 });

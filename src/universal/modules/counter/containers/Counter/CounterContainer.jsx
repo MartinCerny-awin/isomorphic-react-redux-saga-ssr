@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 // Components
-import Counter from 'universal/modules/counter/components/Counter/Counter';
+import Counter from 'modules/counter/components/Counter/Counter';
 
 // Actions
 import {
   incrementCount,
   decrementCount
-} from 'universal/modules/counter/ducks/counter.js';
+} from 'modules/counter/ducks/counter.js';
 
 class CounterContainer extends Component {
   static propTypes = {

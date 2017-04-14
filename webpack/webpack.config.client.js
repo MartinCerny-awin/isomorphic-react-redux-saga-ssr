@@ -41,7 +41,7 @@ export default {
   },
   resolve: {
     extensions: ['.js','.jsx'],
-    modules: [src, 'node_modules'],
+    modules: [src, universalSrc, 'node_modules'],
     unsafeCache: true
   },
   node: {
