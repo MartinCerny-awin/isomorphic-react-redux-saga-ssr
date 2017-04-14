@@ -17,7 +17,7 @@ if (PROD) {
   app.use('/static', express.static('build'));
   app.get('*', renderPage);
 } else {
-  const HMR = require('./hmr.js');
+  const HMR = require('./hmr.js').default;
   // Hot Module Reloading
   HMR(app);
   app.get('*', renderDevPage);

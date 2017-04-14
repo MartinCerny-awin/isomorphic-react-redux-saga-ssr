@@ -9,7 +9,7 @@ function asyncRoute(getComponent) {
     componentDidMount() {
       if ( this.state.Component === null ) {
         getComponent().then((Component) => {
-          this.setState({Component: Component});
+          this.setState({Component: Component.default});
         })
       }
     }
@@ -18,7 +18,6 @@ function asyncRoute(getComponent) {
       const {
         Component
       } = this.state;
-
       if ( Component ) {
         return (<Component {...this.props} />);
       }

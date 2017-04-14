@@ -1,6 +1,6 @@
 const HMR = (app) => {
   const webpack  = require('webpack');
-  const devWebpackConfig = require('../../webpack/webpack.config.development.js');
+  const devWebpackConfig = require('../../webpack/webpack.config.development.js').default;
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
 
