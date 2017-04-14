@@ -11,8 +11,6 @@ import {
   decrementCount
 } from 'universal/modules/counter/ducks/counter.js';
 
-
-@connect(mapStateToProps, mapDispatchToProps)
 class CounterContainer extends Component {
   static propTypes = {
     // State
@@ -48,4 +46,4 @@ function mapDispatchToProps(dispatch, props) {
   };
 }
 
-export default CounterContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
