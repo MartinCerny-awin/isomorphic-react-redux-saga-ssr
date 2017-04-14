@@ -10,17 +10,6 @@ const universalSrc = path.join(src, 'universal');
 
 const clientInclude = [clientSrc, universalSrc];
 
-const babelQuery = {
-  "presets": [
-    "react",
-    ["es2015", { "modules": false }],
-    "stage-0"
-  ],
-  "plugins": [
-    "react-hot-loader/babel"
-  ]
-};
-
 export default {
   devtool: 'eval',
   context: src,
@@ -66,7 +55,16 @@ export default {
       // Javascript
       {test: /\.js|\.jsx$/,
        loader: 'babel-loader',
-       query: babelQuery,
+       options: {
+          "presets": [
+            "react",
+            ["es2015", { "modules": false }],
+            "stage-0"
+          ],
+          "plugins": [
+            "react-hot-loader/babel"
+          ]
+        },
        include: clientInclude
       },
 
