@@ -6,7 +6,7 @@ import {Route} from 'react-router';
 import { Provider } from 'react-redux';
 
 // Components
-import Routes from 'universal/routes/Routes.js';
+import Routes from 'universal/routes/Routes';
 
 class AppContainer extends Component {
   static propTypes = {

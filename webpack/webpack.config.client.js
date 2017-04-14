@@ -29,7 +29,7 @@ export default {
   entry: {
     app: [
       'babel-polyfill/dist/polyfill.js',
-      './client/client.js'
+      './client/client.jsx'
     ],
     vendor
   },
@@ -40,7 +40,7 @@ export default {
     publicPath: '/static/'
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js','.jsx'],
     modules: [src, 'node_modules'],
     unsafeCache: true
   },
@@ -81,7 +81,7 @@ export default {
      },
 
      // JavaScript
-     {test: /\.js$/,
+     {test: /\.js|\.jsx$/,
        loader: 'babel-loader',
        include: clientInclude
      },

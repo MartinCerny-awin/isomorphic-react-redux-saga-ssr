@@ -7,7 +7,7 @@ import path    from 'path';
 import {
   renderPage,
   renderDevPage
-} from './ssr.js';
+} from './ssr';
 
 const PROD = process.env.NODE_ENV === 'production';
 

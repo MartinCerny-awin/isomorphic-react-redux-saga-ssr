@@ -15,7 +15,7 @@ const serverInclude = [server, universal];
 export default {
   context: src,
   entry: {
-    prerender: './universal/routes/Routes.js'
+    prerender: './universal/routes/Routes.jsx'
   },
   target: 'node',
   output: {
@@ -26,7 +26,7 @@ export default {
     publicPath: '/static/'
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     modules: [src, 'node_modules']
   },
   plugins: [
@@ -68,7 +68,7 @@ export default {
       },
 
       {
-        test: /\.js$/,
+        test: /\.js|\.jsx$/,
         loader: 'babel-loader',
         include: serverInclude
       }

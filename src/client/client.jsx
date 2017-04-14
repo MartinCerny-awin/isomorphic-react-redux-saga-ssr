@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 
 // Components
-import App from './containers/AppContainer.js';
+import App from './containers/AppContainer';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -28,8 +28,8 @@ const renderApp = (Component) => {
 renderApp(App);
 
 if (module.hot) {
-  module.hot.accept('./containers/AppContainer.js', () => {
-    const nextApp = require('./containers/AppContainer.js');
+  module.hot.accept('./containers/AppContainer', () => {
+    const nextApp = require('./containers/AppContainer');
     renderApp(nextApp);
   });
 }

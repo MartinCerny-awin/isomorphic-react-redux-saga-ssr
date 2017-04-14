@@ -10,7 +10,7 @@ import * as RouteMap from '../routes/static.js';
 // import * as RouteMap from 'universal/routes/async.js';
 
 // Containers
-import AppContainer from 'universal/containers/App/AppContainer.js';
+import AppContainer from 'universal/containers/App/AppContainer';
 // import PrivateRouteContainer from 'universal/containers/PrivateRoute/PrivateRouteContainer.js';
 
 class Routes extends Component {

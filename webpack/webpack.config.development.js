@@ -29,7 +29,7 @@ export default {
       'babel-polyfill/dist/polyfill.js',
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?noInfo=false',
-      './client/client.js'
+      './client/client.jsx'
     ]
   },
   output: {
@@ -49,7 +49,7 @@ export default {
     }),
   ],
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
     modules: [src, 'node_modules']
   },
   module: {
@@ -64,7 +64,7 @@ export default {
       },
 
       // Javascript
-      {test: /\.js$/,
+      {test: /\.js|\.jsx$/,
        loader: 'babel-loader',
        query: babelQuery,
        include: clientInclude

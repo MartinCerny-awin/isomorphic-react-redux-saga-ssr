@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 // Components
-import Counter from 'universal/modules/counter/components/Counter/Counter.js';
+import Counter from 'universal/modules/counter/components/Counter/Counter';
 
 // Actions
 import {
