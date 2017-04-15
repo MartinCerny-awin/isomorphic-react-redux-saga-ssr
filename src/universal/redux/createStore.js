@@ -12,13 +12,19 @@ import {
 
 import * as Reducers from './reducers/index.js';
 
-export default (history) => {
+export default (history, reduxState = undefined) => {
   const middleware = routerMiddleware(history);
 
-  const store = createStore(combineReducers({
-    ...Reducers,
-    router: routerReducer
-  }), applyMiddleware(middleware));
+  const store = createStore(
+    combineReducers(
+      {
+        ...Reducers,
+        router: routerReducer
+      },
+      reduxState,
+    ),
+    applyMiddleware(middleware)
+  );
 
 
   if (module.hot) {
