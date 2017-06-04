@@ -1,5 +1,5 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { ALBUMS_REQUEST, receiveAlbums } from 'universal/actions/albums';
+import { ALBUMS_REQUEST, receiveAlbums } from 'actions/albums';
 // import { albumsSelector } from 'selectors';
 
 function* requestAlbums({ uri }) {

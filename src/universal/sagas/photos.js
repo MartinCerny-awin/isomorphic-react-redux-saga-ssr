@@ -1,5 +1,5 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects';
-import { PHOTOS_REQUEST, receivePhotos } from 'universal/actions/photos';
+import { PHOTOS_REQUEST, receivePhotos } from 'actions/photos';
 // import { photosSelector } from 'selectors';
 
 function* requestPhotos({ id, uri }) {

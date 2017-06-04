@@ -1,7 +1,7 @@
 import { fork } from 'redux-saga/effects';
 
-import { watchRequestAlbums } from './albums';
-import { watchRequestPhotos } from './photos';
+import { watchRequestAlbums } from 'sagas/albums';
+import { watchRequestPhotos } from 'sagas/photos';
 
 export default function* rootSaga() {
 	yield [

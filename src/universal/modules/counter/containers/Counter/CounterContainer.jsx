@@ -12,8 +12,8 @@ import {
   decrementCount,
 } from 'modules/counter/ducks/counter.js';
 
-import { requestPhotos } from 'universal/actions/photos';
-import { requestAlbums } from 'universal/actions/albums';
+import { requestPhotos } from 'actions/photos';
+import { requestAlbums } from 'actions/albums';
 
 class CounterContainer extends Component {
   static propTypes = {

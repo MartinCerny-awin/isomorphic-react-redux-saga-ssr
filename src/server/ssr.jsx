@@ -7,11 +7,11 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import { Provider } from 'react-redux';
 import {StaticRouter} from 'react-router';
+import createHistory from 'history/createMemoryHistory'
 
 // Redux
 // import {push} from 'react-router-redux';
-import createStore from 'universal/redux/createStore.js';
-import createHistory from 'history/createMemoryHistory'
+import createStore from 'universal/redux/createStore';
 import rootSaga from 'universal/sagas/sagas'
 
 // Components

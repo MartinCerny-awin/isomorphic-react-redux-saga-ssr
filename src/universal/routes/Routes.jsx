@@ -8,11 +8,11 @@ import {Route, Redirect} from 'react-router';
 import * as RouteMap from 'routes/static.js';
 
 // This is used in production for code splitting via `wepback.config.server.js`
-// import * as RouteMap from 'universal/routes/async.js';
+// import * as RouteMap from 'routes/async';
 
 // Containers
 import AppContainer from 'containers/App/AppContainer';
-// import PrivateRouteContainer from 'universal/containers/PrivateRoute/PrivateRouteContainer.js';
+// import PrivateRouteContainer from 'containers/PrivateRoute/PrivateRouteContainer.js';
 
 class Routes extends Component {
   render () {
