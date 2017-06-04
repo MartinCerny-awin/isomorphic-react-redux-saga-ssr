@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 import http    from 'http';
 import express from 'express';
 import colors  from 'colors';
@@ -17,8 +19,8 @@ if (PROD) {
   app.use('/static', express.static('build'));
   app.get('*', renderPage);
 } else {
-  const HMR = require('server/hmr.js').default;
   // Hot Module Reloading
+  const HMR = require('server/hmr.js').default;
   HMR(app);
   app.get('*', renderDevPage);
 }
@@ -30,17 +32,13 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// development error handler
-if (!PROD) {
-  app.use(function(err, req, res, next) {
-    console.error('error : ', err)
-    res.status(err.status || 500);
-  });
-}
-
-// production error handler
+// error handler
 app.use(function(err, req, res, next) {
-  console.error('error : ', err.message)
+  if (PROD) {
+    console.error('error : ', err.message)
+  } else {
+    console.error('error : ', err)
+  }
   res.status(err.status || 500);
 });
 

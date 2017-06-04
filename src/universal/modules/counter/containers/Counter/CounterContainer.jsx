@@ -9,13 +9,16 @@ import Counter from 'modules/counter/components/Counter/Counter';
 // Actions
 import {
   incrementCount,
-  decrementCount
+  decrementCount,
 } from 'modules/counter/ducks/counter.js';
+
+import { requestPhotos } from 'universal/actions/photos';
+import { requestAlbums } from 'universal/actions/albums';
 
 class CounterContainer extends Component {
   static propTypes = {
     // State
-    count: PropTypes.number.isRequired,
+    counter: PropTypes.number.isRequired,
 
     // Dispatchers
     incrementCount: PropTypes.func.isRequired,
@@ -29,9 +32,9 @@ class CounterContainer extends Component {
 
 
 function mapStateToProps(state, props) {
-  const count = state.counter.get('count');
+  const counter = state.counter;
   return {
-    count
+    counter
   };
 }
 
@@ -40,6 +43,8 @@ function mapDispatchToProps(dispatch, props) {
   return {
     incrementCount: () => {
       dispatch(incrementCount());
+      dispatch(requestPhotos(1));
+      dispatch(requestAlbums());
     },
     decrementCount: () => {
       dispatch(decrementCount());

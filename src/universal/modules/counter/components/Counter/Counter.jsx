@@ -28,14 +28,14 @@ class Counter extends Component {
 
   render () {
     const {
-      count,
+      counter,
       incrementCount,
       decrementCount
     } = this.props;
 
     return (
       <div className={styles.counterContainer}>
-        <div className={styles.counter}>{count}</div>
+        <div className={styles.counter}>{counter.get('count')}</div>
         <a className={classNames(styles.button, styles.positive)} onClick={this.handleIncrementClick.bind(this, incrementCount)}>+</a>
         <a className={classNames(styles.button, styles.negative)} onClick={this.handleDecrementClick.bind(this, decrementCount)}>-</a>
       </div>

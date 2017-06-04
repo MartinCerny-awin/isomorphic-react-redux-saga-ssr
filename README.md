@@ -42,6 +42,7 @@ the following technologies.
 - webpack-dev-middleware
 - webpack-hot-middleware
 - immutablejs
+- Redux Saga https://github.com/navgarcha/universal-react-saga (difference axios in api replaced by fetch), good article https://wecodetheweb.com/2016/10/01/handling-async-in-redux-with-sagas/
 
 ## 🛠 Setup
 First install the dependencies, in the root directory of this project run.
