@@ -25,4 +25,4 @@ function asyncRoute(getComponent) {
 }
 
 export const Home = asyncRoute(() => System.import('components/Home/Home'));
-export const Counter = asyncRoute(() => System.import('modules/counter/containers/Counter/CounterContainer'));
+export const Counter = asyncRoute(() => System.import('modules/counter/CounterContainer'));

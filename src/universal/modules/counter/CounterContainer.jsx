@@ -1,41 +1,28 @@
-// Libraries
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-// Components
-import Counter from 'modules/counter/components/Counter/Counter';
-
-// Actions
-import { incrementCount, decrementCount } from 'modules/counter/ducks/counter';
+import Counter from './Counter';
+import { actions } from './counter';
 
 const CounterContainer = props => <Counter {...props} />;
 
 CounterContainer.propTypes = {
-  // State
   count: PropTypes.number.isRequired,
-
-  // Dispatchers
   incrementCount: PropTypes.func.isRequired,
   decrementCount: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const count = state.counter.get('count');
   return {
     count,
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
-  return {
-    incrementCount: () => {
-      dispatch(incrementCount());
-    },
-    decrementCount: () => {
-      dispatch(decrementCount());
-    },
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(actions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);

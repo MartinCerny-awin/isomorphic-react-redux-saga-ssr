@@ -2,7 +2,6 @@
   position: relative;
 }
 
-
 .counter {
   width: 200px;
   height: 200px;
@@ -19,30 +18,33 @@
   display: inline-block;
   display: flex;
   font-size: 3em;
-  line-height: 50px;
   justify-content: center;
   vertical-align: center;
   color: white;
   background-color: #30B661;
   border: solid 1px #0F9D58;
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
+  border-radius: 75px;
+  width: 75px;
+  height: 75px;
+  margin-top: -30px;
   -webkit-user-select: none;  /* Chrome all / Safari all */
 }
 
 .button:hover {
   cursor: pointer;
+  outline: none;
+}
+
+.button:focus {
+  outline: none;
 }
 
 .positive {
   background-color: #B1DDCC;
   border: solid 7px #7EC6AB;
   position: absolute;
-  right: -25px;
+  right: -30px;
   top: 50%;
-  margin-top: -25px;
-  font-size: 2.5em
 }
 
 .positive:hover {
@@ -54,10 +56,9 @@
   background-color: #F48F94;
   border: solid 7px #F27D83;
   position: absolute;
-  left: -25px;
+  left: -30px;
+  padding-bottom: 5px;
   top: 50%;
-  margin-top: -25px;
-  line-height: 45px;
 }
 
 .negative:hover {

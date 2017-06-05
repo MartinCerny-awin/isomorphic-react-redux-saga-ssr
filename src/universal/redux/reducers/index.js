@@ -1,1 +1,1 @@
-export { default as counter } from 'modules/counter/ducks/counter';
+export { default as counter } from 'modules/counter/counter';

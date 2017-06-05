@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import styles from './Counter.css';
 
 class Counter extends Component {
-  handleLinkClick = (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-  };
-
-  handleIncrementClick = (event) => {
-    this.handleLinkClick(event);
+  handleIncrementClick = () => {
     this.props.incrementCount();
   };
 
-  handleDecrementClick = (event) => {
-    this.handleLinkClick(event);
+  handleDecrementClick = () => {
     this.props.decrementCount();
   };
 
@@ -25,12 +19,12 @@ class Counter extends Component {
     return (
       <div className={styles.counterContainer}>
         <div className={styles.counter}>{count}</div>
-        <a className={classNames(styles.button, styles.positive)} onClick={this.handleIncrementClick}>
+        <button className={classNames(styles.button, styles.positive)} onClick={this.handleIncrementClick}>
           +
-        </a>
-        <a className={classNames(styles.button, styles.negative)} onClick={this.handleDecrementClick}>
+        </button>
+        <button className={classNames(styles.button, styles.negative)} onClick={this.handleDecrementClick}>
           -
-        </a>
+        </button>
       </div>
     );
   }
