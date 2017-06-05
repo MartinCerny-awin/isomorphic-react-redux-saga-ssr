@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "max-len": [
+      2,
+      120
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack/client.babel.js"
+      }
+    }
+  }
+}

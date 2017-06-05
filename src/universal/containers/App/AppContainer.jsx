@@ -1,17 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import App from 'components/App/App';
 
-class AppContainer extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+const AppContainer = props => <App {...props} />;
 
-  render () {
-    return (
-      <App {...this.props}/>
-    );
-  }
-}
+AppContainer.propTypes = {
+  children: PropTypes.element.isRequired,
+};
 
 export default AppContainer;

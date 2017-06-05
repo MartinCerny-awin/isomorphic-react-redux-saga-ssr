@@ -1,16 +1,10 @@
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware
-} from 'redux';
-import {
-  ConnectedRouter,
-  routerReducer,
-  routerMiddleware
-} from 'react-router-redux';
+/* eslint global-require: 0 */
+
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createSaga, { END } from 'redux-saga';
 
-import * as Reducers from './reducers/index.js';
+import * as Reducers from 'redux/reducers/index';
 
 export default (history, reduxState = undefined) => {
   const saga = createSaga();
@@ -20,26 +14,23 @@ export default (history, reduxState = undefined) => {
     combineReducers(
       {
         ...Reducers,
-        router: routerReducer
+        router: routerReducer,
       },
       reduxState,
     ),
-    applyMiddleware(
-      saga,
-      router,
-    )
+    applyMiddleware(saga, router),
   );
 
-	store.runSaga = saga.run;
-	store.close = () => store.dispatch(END);
+  store.runSaga = saga.run;
+  store.close = () => store.dispatch(END);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducers', () => {
-      const nextReducers = require('./reducers/index.js');
+    module.hot.accept('redux/reducers', () => {
+      const nextReducers = require('redux/reducers/index.js');
       const rootReducer = combineReducers({
         ...nextReducers,
-        router: routerReducer
+        router: routerReducer,
       });
 
       store.replaceReducer(rootReducer);
@@ -52,4 +43,4 @@ export default (history, reduxState = undefined) => {
   }
 
   return store;
-}
+};

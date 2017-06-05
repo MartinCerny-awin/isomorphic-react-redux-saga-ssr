@@ -1,45 +1,44 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Counter.css';
 import classNames from 'classnames';
+import styles from './Counter.css';
 
 class Counter extends Component {
-
   static propTypes = {
     incrementCount: PropTypes.func.isRequired,
     decrementCount: PropTypes.func.isRequired,
-    count: PropTypes.number.isRequired
-  }
+    count: PropTypes.number.isRequired,
+  };
 
-  handleLinkClick(event) {
+  handleLinkClick = (event) => {
     event.stopPropagation();
     event.preventDefault();
-  }
+  };
 
-  handleIncrementClick (incrementCount, event) {
+  handleIncrementClick = (event) => {
     this.handleLinkClick(event);
-    incrementCount();
-  }
+    this.props.incrementCount();
+  };
 
-  handleDecrementClick(decrementCount, event) {
+  handleDecrementClick = (event) => {
     this.handleLinkClick(event);
-    decrementCount();
-  }
+    this.props.decrementCount();
+  };
 
-  render () {
-    const {
-      counter,
-      incrementCount,
-      decrementCount
-    } = this.props;
+  render() {
+    const { count } = this.props;
 
     return (
       <div className={styles.counterContainer}>
-        <div className={styles.counter}>{counter.get('count')}</div>
-        <a className={classNames(styles.button, styles.positive)} onClick={this.handleIncrementClick.bind(this, incrementCount)}>+</a>
-        <a className={classNames(styles.button, styles.negative)} onClick={this.handleDecrementClick.bind(this, decrementCount)}>-</a>
+        <div className={styles.counter}>{count}</div>
+        <a className={classNames(styles.button, styles.positive)} onClick={this.handleIncrementClick}>
+          +
+        </a>
+        <a className={classNames(styles.button, styles.negative)} onClick={this.handleDecrementClick}>
+          -
+        </a>
       </div>
-    )
+    );
   }
 }
 

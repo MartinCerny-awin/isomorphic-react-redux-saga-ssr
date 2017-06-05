@@ -1,54 +1,40 @@
 // Libraries
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // Components
 import Counter from 'modules/counter/components/Counter/Counter';
 
 // Actions
-import {
-  incrementCount,
-  decrementCount,
-} from 'modules/counter/ducks/counter.js';
+import { incrementCount, decrementCount } from 'modules/counter/ducks/counter';
 
-import { requestPhotos } from 'actions/photos';
-import { requestAlbums } from 'actions/albums';
+const CounterContainer = props => <Counter {...props} />;
 
-class CounterContainer extends Component {
-  static propTypes = {
-    // State
-    counter: PropTypes.number.isRequired,
+CounterContainer.propTypes = {
+  // State
+  count: PropTypes.number.isRequired,
 
-    // Dispatchers
-    incrementCount: PropTypes.func.isRequired,
-    decrementCount: PropTypes.func.isRequired
-  }
+  // Dispatchers
+  incrementCount: PropTypes.func.isRequired,
+  decrementCount: PropTypes.func.isRequired,
+};
 
-  render () {
-    return (<Counter {...this.props} />);
-  }
-}
-
-
-function mapStateToProps(state, props) {
-  const counter = state.counter;
+function mapStateToProps(state) {
+  const count = state.counter.get('count');
   return {
-    counter
+    count,
   };
 }
 
-
-function mapDispatchToProps(dispatch, props) {
+function mapDispatchToProps(dispatch) {
   return {
     incrementCount: () => {
       dispatch(incrementCount());
-      dispatch(requestPhotos(1));
-      dispatch(requestAlbums());
     },
     decrementCount: () => {
       dispatch(decrementCount());
-    }
+    },
   };
 }
 
