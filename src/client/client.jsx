@@ -36,7 +36,7 @@ renderApp(App);
 
 if (module.hot) {
   module.hot.accept('client/containers/AppContainer', () => {
-    const nextApp = require('client/containers/AppContainer');
+    const nextApp = require('client/containers/AppContainer').default;
     renderApp(nextApp);
   });
 }
