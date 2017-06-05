@@ -1,11 +1,28 @@
-// Libraries
+/* eslint global-require: 0 */
+/* eslint react/no-danger: 0 */
+
 import React from 'react';
 import PropTypes from 'prop-types';
+import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router';
 
 const Html = (props) => {
-  const { initialState, rootComponent, assets, PROD } = props;
+  const PROD = process.env.NODE_ENV === 'production';
+  const { initialState, url, assets, store } = props;
 
   const { manifest, app, vendor } = assets || {};
+
+  const Layout = PROD ? require('../../build/prerender.js').default : () => {};
+  const rootComponent =
+    PROD &&
+    renderToString(
+      <Provider store={store}>
+        <StaticRouter location={url} context={{}}>
+          <Layout />
+        </StaticRouter>
+      </Provider>,
+    );
 
   return (
     <html lang="en">
@@ -25,11 +42,23 @@ const Html = (props) => {
   );
 };
 
+Html.defaultProps = {
+  assets: undefined,
+};
+
 Html.propTypes = {
-  initialState: PropTypes.object,
-  rootComponent: PropTypes.object,
-  assets: PropTypes.object,
-  PROD: PropTypes.bool.isRequired,
+  initialState: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  store: PropTypes.shape({
+    dispatch: PropTypes.func,
+    subscribe: PropTypes.func,
+    getState: PropTypes.func,
+  }).isRequired,
+  assets: PropTypes.shape({
+    manifest: PropTypes.object,
+    app: PropTypes.object,
+    vendor: PropTypes.object,
+  }),
 };
 
 export default Html;

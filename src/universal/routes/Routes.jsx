@@ -28,7 +28,7 @@ const Routes = (props) => {
 };
 
 Routes.propTypes = {
-  location: PropTypes.string.isRequired,
+  location: PropTypes.shape({}).isRequired,
 };
 
 export default Routes;

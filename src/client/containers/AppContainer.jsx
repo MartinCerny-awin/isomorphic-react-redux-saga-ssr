@@ -5,17 +5,13 @@ import { Route } from 'react-router';
 
 import Routes from 'universal/routes/Routes';
 
-const AppContainer = (props) => {
-  console.log(props.history);
-  return (
-    <ConnectedRouter history={props.history}>
-      <Route render={({ location }) => <Routes location={location} />} />
-    </ConnectedRouter>
-  );
-};
+const AppContainer = props =>
+  (<ConnectedRouter history={props.history}>
+    <Route render={({ location }) => <Routes location={location} />} />
+  </ConnectedRouter>);
 
 AppContainer.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.shape({}).isRequired,
 };
 
 export default AppContainer;
