@@ -8,7 +8,8 @@
     "production": "NODE_PATH=./src NODE_ENV=production node ./src/server/server.babel.js",
     "build": "npm run build:client && npm run build:server",
     "build:server": "NODE_ENV=production webpack --config ./webpack/server.babel.js",
-    "build:client": "NODE_ENV=production webpack --config ./webpack/client.babel.js"
+    "build:client": "NODE_ENV=production webpack --config ./webpack/client.babel.js",
+    "lint": "./node_modules/.bin/eslint ./src"
   },
   "keywords": [
     "react",
@@ -41,6 +42,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.0.1",
     "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-redux-saga": "^0.3.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.18.2",
