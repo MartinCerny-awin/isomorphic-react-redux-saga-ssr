@@ -1,7 +1,7 @@
-# ⚡ (V2) Universal JS - Server Side Rendering, Code Splitting and Hot Module Reloading ⚡
+# ⚡ Isomorphic JS - Server Side Rendering, Code Splitting and Hot Module Reloading ⚡
 
 ## 💭 What is it?
-*Universal JS: -*
+*Isomorphic JS: -*
 JavaScript that can run on both the server and client (or any other JS platform for that matter) !
 
 *Hot Module Reloading: -*
@@ -26,23 +26,43 @@ configuration as middleware to listen for file changes, build then and push them
 
 ---
 
-This project is and updated version of [this project](https://github.com/Alex-ray/universal-hmr-ssr-react-redux). With the biggest updates being migrations to **React Router 4** and **Hot Module Reloading 3**
+## ⚙ Technologies
 
-The main goal of this project remains the same; A simple and no BS approach to a
-Universal JS, Server Side Rendering, Code Splitting and Hot Module Reloading using
-the following technologies.
+### React
+v 15.5.0 version is used in this project with PropTypes being inside its own library. The React code is using ES6 and dividing components into [presentation components and container components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0).
 
-- React
-- Redux
-- React Router 4
-- Webpack 2
-- Hot Module Reloader 3
-- Babel
-- Express
-- webpack-dev-middleware
-- webpack-hot-middleware
-- immutablejs
-- Redux Saga https://github.com/navgarcha/universal-react-saga (difference axios in api replaced by fetch), good article https://wecodetheweb.com/2016/10/01/handling-async-in-redux-with-sagas/
+### Redux
+Reducers, actions creators and action types are using [customized duck structure](https://hackernoon.com/my-journey-toward-a-maintainable-project-structure-for-react-redux-b05dfd999b5). They are stored inside JavaScript file in modules folder .
+
+### React Router 4
+The React Router 4 routes are just components, which define the composition of UI.
+
+### Webpack 2
+Used for code splitting.
+
+### Hot Module Loader 3
+Replace changed modules in the real time. React Hot Loader 3 is in beta, but fixes several issues and is needed in case React Router 4 is used.
+
+### Babel
+Compiler that helps us to write ES6 JavaScript. React ES6 features such property initializers, arrow functions and spread attribute are used in the project.   [React on ES6+](https://babeljs.io/blog/2015/06/07/react-on-es6-plus)
+
+### Express
+Manages initial render of the content (SSR)
+
+### webpack-dev-middleware
+Middleware which can be mounted in an express server to serve the latest compilation of your bundle during development. This uses webpack's Node API in watch mode and instead of outputting to the file system it outputs to memory.
+
+### webpack-hot-middleware
+Alternative to webpack-dev-server but instead of starting a server itself it allows you to mount it in an existing / custom express server alongside webpack-dev-middleware.
+
+### Immutable.js
+Immutable data structures provide us with a cheap way to track changes on objects, which is all we need to implement shouldComponentUpdate. This can provide us with a nice performance boost.
+
+### Redux Saga
+The implementation of Redux Saga was made with the help of [Universal React Saga](https://github.com/navgarcha/universal-react-saga). The axios library was replaced by fetch and sagas fitting into modules were moved there.
+
+Good article
+https://wecodetheweb.com/2016/10/01/handling-async-in-redux-with-sagas/
 
 ## 🛠 Setup
 First install the dependencies, in the root directory of this project run.
