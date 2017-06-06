@@ -19,10 +19,8 @@ const Routes = (props) => {
 
   return (
     <AppContainer>
-      <div>
-        <Route exact location={location} path="/" component={RouteMap.Home} />
-        <Route exact location={location} path="/counter" component={RouteMap.Counter} />
-      </div>
+      <Route exact location={location} path="/" component={RouteMap.Home} />
+      <Route exact location={location} path="/counter" component={RouteMap.Counter} />
     </AppContainer>
   );
 };
