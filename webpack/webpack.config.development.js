@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import qs from 'querystring';
 
 const root = process.cwd();
 const src = path.join(root, 'src');

@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import qs from 'querystring';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 // Paths
