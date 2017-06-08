@@ -8,6 +8,8 @@ import { basename, join } from 'path';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import createHistory from 'history/createMemoryHistory';
+import { Provider } from 'react-redux';
+import { StaticRouter } from 'react-router';
 
 // Redux
 // import {push} from 'react-router-redux';
@@ -18,18 +20,30 @@ import rootSaga from 'universal/sagas/index';
 import Html from 'server/Html';
 
 function renderApp(url, res, store, assets) {
+  const PROD = process.env.NODE_ENV === 'production';
+  const Layout = PROD ? require('../../build/prerender.js').default : () => {};
+  const rootComponent = PROD
+    ? (<Provider store={store}>
+      <StaticRouter location={url} context={{}}>
+        <Layout />
+      </StaticRouter>
+    </Provider>)
+    : null;
+
   store.runSaga(rootSaga).done.then(() => {
     // get state from store after sagas were run and strigify it for rendering in HTML
     const state = store.getState();
     const initialState = `window.__INITIAL_STATE__ = ${JSON.stringify(state)}`;
 
-    const html = renderToString(<Html store={store} initialState={initialState} url={url} assets={assets} />);
+    const html = renderToString(
+      <Html initialState={initialState} rootComponent={rootComponent} assets={assets} PROD={PROD} />,
+    );
     res.send(`<!DOCTYPE html>${html}`);
   });
-
-  // Trigger sagas for component to run
-  // https://github.com/yelouafi/redux-saga/issues/255#issuecomment-210275959
-  // rootComponent;
+  if (PROD) {
+    // Do first render, trigger sagas for component to run
+    renderToString(rootComponent);
+  }
 
   // Dispatch a close event so sagas stop listening after they're resolved
   store.closeSagas();

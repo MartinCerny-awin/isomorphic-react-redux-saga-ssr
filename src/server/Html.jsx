@@ -4,25 +4,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { renderToString } from 'react-dom/server';
-import { Provider } from 'react-redux';
-import { StaticRouter } from 'react-router';
 
 const Html = (props) => {
-  const PROD = process.env.NODE_ENV === 'production';
-  const { initialState, url, assets, store } = props;
+  const { initialState, rootComponent, assets, PROD } = props;
 
   const { manifest, app, vendor } = assets || {};
-
-  const Layout = PROD ? require('../../build/prerender.js').default : () => {};
-  const rootComponent =
-    PROD &&
-    renderToString(
-      <Provider store={store}>
-        <StaticRouter location={url} context={{}}>
-          <Layout />
-        </StaticRouter>
-      </Provider>,
-    );
 
   return (
     <html lang="en">
@@ -33,7 +19,9 @@ const Html = (props) => {
       </head>
       <body>
         <script dangerouslySetInnerHTML={{ __html: initialState }} />
-        {PROD ? <div id="root" dangerouslySetInnerHTML={{ __html: rootComponent }} /> : <div id="root" />}
+        {PROD
+          ? <div id="root" dangerouslySetInnerHTML={{ __html: renderToString(rootComponent) }} />
+          : <div id="root" />}
         {PROD && <script dangerouslySetInnerHTML={{ __html: manifest.text }} />}
         {PROD && <script src={vendor.js} />}
         <script src={PROD ? app.js : '/static/app.js'} />
@@ -44,21 +32,18 @@ const Html = (props) => {
 
 Html.defaultProps = {
   assets: undefined,
+  rootComponent: null,
 };
 
 Html.propTypes = {
   initialState: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  store: PropTypes.shape({
-    dispatch: PropTypes.func,
-    subscribe: PropTypes.func,
-    getState: PropTypes.func,
-  }).isRequired,
+  rootComponent: PropTypes.element,
   assets: PropTypes.shape({
     manifest: PropTypes.object,
     app: PropTypes.object,
     vendor: PropTypes.object,
   }),
+  PROD: PropTypes.bool.isRequired,
 };
 
 export default Html;

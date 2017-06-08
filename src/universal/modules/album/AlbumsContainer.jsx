@@ -6,8 +6,11 @@ import { bindActionCreators } from 'redux';
 import { actions, selectors } from './albums';
 
 class AlbumsContainer extends Component {
-  componentDidMount() {
-    this.props.requestAlbums();
+  constructor(props) {
+    super(props);
+    if (!this.props.albums.length) {
+      this.props.requestAlbums();
+    }
   }
 
   render() {

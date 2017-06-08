@@ -6,7 +6,6 @@ import * as api from 'api';
 
 function* requestAlbums() {
   const cachedAlbums = yield select(selectors.getAlbums);
-
   if (cachedAlbums.length === 0) {
     try {
       const response = yield call(api.get, 'albums');
