@@ -51,6 +51,7 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "colors": "^1.1.2",
     "express": "^4.15.2",

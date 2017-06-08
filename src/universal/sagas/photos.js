@@ -18,5 +18,5 @@ function* requestPhotos({ id, uri }) {
 }
 
 export default function* watchRequestPhotos() {
-  yield* takeEvery(PHOTOS_REQUEST, requestPhotos);
+  yield takeEvery(PHOTOS_REQUEST, requestPhotos);
 }

@@ -1,22 +1,24 @@
+/* eslint no-console: 0 */
+
 import { takeLatest, call, put, select } from 'redux-saga/effects';
-import { ALBUMS_REQUEST, receiveAlbums } from 'actions/albums';
-// import { albumsSelector } from 'selectors';
+import { actions, types, selectors } from 'modules/album/albums';
+import * as api from 'api';
 
-function* requestAlbums({ uri }) {
-  // const cachedAlbums = yield select(albumsSelector);
+function* requestAlbums() {
+  const cachedAlbums = yield select(selectors.getAlbums);
 
-  // if (!cachedAlbums) {
-  try {
-    const albums = yield call(request, uri);
-    yield put(receiveAlbums(albums));
-  } catch (error) {
-    console.log('Albums request failed');
+  if (cachedAlbums.length === 0) {
+    try {
+      const response = yield call(api.get, 'albums');
+      yield put(actions.receiveAlbums(response.data));
+    } catch (error) {
+      console.log('Albums request failed');
+    }
+  } else {
+    console.log('Albums already in store');
   }
-  // } else {
-  //   console.log('Albums already in store');
-  // }
 }
 
 export default function* watchRequestAlbums() {
-  yield* takeLatest(ALBUMS_REQUEST, requestAlbums);
+  yield takeLatest(types.ALBUMS_REQUEST, requestAlbums);
 }
