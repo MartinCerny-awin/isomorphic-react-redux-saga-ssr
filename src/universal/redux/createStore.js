@@ -22,12 +22,12 @@ export default (history, reduxState = undefined) => {
   );
 
   store.runSaga = saga.run;
-  store.close = () => store.dispatch(END);
+  store.closeSagas = () => store.dispatch(END);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('redux/reducers', () => {
-      const nextReducers = require('redux/reducers/index.js');
+    module.hot.accept('redux/reducers/index', () => {
+      const nextReducers = require('redux/reducers/index');
       const rootReducer = combineReducers({
         ...nextReducers,
         router: routerReducer,
@@ -35,11 +35,6 @@ export default (history, reduxState = undefined) => {
 
       store.replaceReducer(rootReducer);
     });
-    // https://github.com/edwardzhxw/react-universal/blob/1bc5e6a49bf08cdf59eb88fc2c76f42e6995a106/src/common/redux/store.js
-    //  module.hot.accept('../sagas', () => {
-    //   store.closeSagas();
-    //   store.rootTask = sagaMiddleware.run(require('../sagas').default);
-    // });
   }
 
   return store;

@@ -10,7 +10,7 @@ import createHistory from 'history/createBrowserHistory';
 
 import App from 'client/containers/AppContainer';
 import createStore from 'universal/redux/createStore';
-import rootSaga from 'universal/sagas/sagas';
+import rootSaga from 'universal/sagas/index';
 
 // Grab the state from a global variable injected into the server-generated HTML
 const preloadedState = window.__INITIAL_STATE__;
@@ -18,7 +18,7 @@ const preloadedState = window.__INITIAL_STATE__;
 const history = createHistory();
 const store = createStore(history, preloadedState);
 
-store.runSaga(rootSaga);
+store.rootTask = store.runSaga(rootSaga);
 
 const rootEl = document.getElementById('root');
 const renderApp = (Component) => {
@@ -36,7 +36,12 @@ renderApp(App);
 
 if (module.hot) {
   module.hot.accept('client/containers/AppContainer', () => {
-    const nextApp = require('client/containers/AppContainer').default;
-    renderApp(nextApp);
+    const newApp = require('client/containers/AppContainer').default;
+    renderApp(newApp);
+  });
+
+  module.hot.accept('universal/sagas', () => {
+    store.closeSagas();
+    store.rootTask = store.runSaga(require('universal/sagas').default);
   });
 }

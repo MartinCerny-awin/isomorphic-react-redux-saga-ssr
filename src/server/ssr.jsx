@@ -12,7 +12,7 @@ import createHistory from 'history/createMemoryHistory';
 // Redux
 // import {push} from 'react-router-redux';
 import createStore from 'universal/redux/createStore';
-import rootSaga from 'universal/sagas/sagas';
+import rootSaga from 'universal/sagas/index';
 
 // Components
 import Html from 'server/Html';
@@ -32,7 +32,7 @@ function renderApp(url, res, store, assets) {
   // rootComponent;
 
   // Dispatch a close event so sagas stop listening after they're resolved
-  store.close();
+  store.closeSagas();
 }
 
 export const renderPage = (req, res) => {
