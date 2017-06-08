@@ -41,7 +41,7 @@ The React Router 4 routes are just components, which define the composition of U
 Used for code splitting.
 
 ### Hot Module Loader 3
-Replace changed modules in the real time. React Hot Loader 3 is in beta, but fixes several issues and is needed in case React Router 4 is used.
+Replace changed modules in the real time. React Hot Loader 3 is in beta, but fixes several issues and is needed in case React Router 4 is used. This projects does HMR of Components, Containers, Styles, Sagas and Reducers
 
 ### Babel
 Compiler that helps us to write ES6 JavaScript. React ES6 features such property initializers, arrow functions and spread attribute are used in the project.   [React on ES6+](https://babeljs.io/blog/2015/06/07/react-on-es6-plus)
