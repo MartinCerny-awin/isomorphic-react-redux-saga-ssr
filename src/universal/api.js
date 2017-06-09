@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 // General API constants
-export const URL = 'https://jsonplaceholder.typicode.com/';
+export const URL = 'https://jsonplaceholder.typicode.com';
 export const AUTH_HEADER = 'Authorization';
 
 const requestConfig = {

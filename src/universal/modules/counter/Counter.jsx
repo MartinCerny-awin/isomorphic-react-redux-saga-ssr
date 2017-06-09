@@ -4,7 +4,13 @@ import classNames from 'classnames';
 
 import styles from './Counter.css';
 
-class Counter extends Component {
+export default class Counter extends Component {
+  static propTypes = {
+    incrementCount: PropTypes.func.isRequired,
+    decrementCount: PropTypes.func.isRequired,
+    count: PropTypes.number.isRequired,
+  };
+
   handleIncrementClick = () => {
     this.props.incrementCount();
   };
@@ -29,11 +35,3 @@ class Counter extends Component {
     );
   }
 }
-
-Counter.propTypes = {
-  incrementCount: PropTypes.func.isRequired,
-  decrementCount: PropTypes.func.isRequired,
-  count: PropTypes.number.isRequired,
-};
-
-export default Counter;

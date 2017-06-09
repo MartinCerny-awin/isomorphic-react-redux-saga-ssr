@@ -22,7 +22,9 @@ const Routes = (props) => {
       <div>
         <Route exact location={location} path="/" component={RouteMap.Home} />
         <Route exact location={location} path="/counter" component={RouteMap.Counter} />
-        <Route exact location={location} path="/albums" component={RouteMap.Albums} />
+        <Route path="/albums" component={RouteMap.Albums} />
+        <Route exact location={location} path="/albums" component={RouteMap.AlbumsList} />
+        <Route path="/albums/:albumId" component={RouteMap.Photos} />
       </div>
     </AppContainer>
   );

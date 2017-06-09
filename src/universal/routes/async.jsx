@@ -26,4 +26,6 @@ function asyncRoute(getComponent) {
 
 export const Home = asyncRoute(() => System.import('components/Home/Home'));
 export const Counter = asyncRoute(() => System.import('modules/counter/CounterContainer'));
-export const Albums = asyncRoute(() => System.import('modules/album/AlbumsContainer'));
+export const Albums = asyncRoute(() => System.import('modules/album/Albums'));
+export const AlbumsList = asyncRoute(() => System.import('modules/album/AlbumsListContainer'));
+export const Photos = asyncRoute(() => System.import('modules/photo/PhotosContainer'));
