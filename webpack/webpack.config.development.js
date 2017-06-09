@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const root = process.cwd();
 const src = path.join(root, 'src');
@@ -28,7 +29,7 @@ export default {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NoEmitOnErrorsPlugin(),
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __PRODUCTION__: false,
