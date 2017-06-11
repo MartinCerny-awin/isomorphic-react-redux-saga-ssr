@@ -5,10 +5,13 @@ import { routerReducer, routerMiddleware } from 'react-router-redux';
 import createSaga, { END } from 'redux-saga';
 
 import * as Reducers from 'redux/reducers/index';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export default (history, reduxState = undefined) => {
   const saga = createSaga();
   const router = routerMiddleware(history);
+
+  const enhancer = composeWithDevTools(applyMiddleware(saga, router));
 
   const store = createStore(
     combineReducers({
@@ -16,7 +19,7 @@ export default (history, reduxState = undefined) => {
       router: routerReducer,
     }),
     reduxState,
-    applyMiddleware(saga, router),
+    enhancer,
   );
 
   store.runSaga = saga.run;
