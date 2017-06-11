@@ -3,7 +3,7 @@ import webpack from 'webpack';
 
 import AssetsPlugin from 'assets-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const root = process.cwd();
 const src = path.join(root, 'src');
@@ -41,7 +41,7 @@ export default {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin('[name].css'),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    // new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
       minChunks: Infinity,
