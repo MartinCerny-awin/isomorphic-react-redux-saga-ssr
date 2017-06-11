@@ -41,7 +41,6 @@ export default {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new ExtractTextPlugin('[name].css'),
-    new webpack.NormalModuleReplacementPlugin(/routes\/static/, 'async.jsx'),
     new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],

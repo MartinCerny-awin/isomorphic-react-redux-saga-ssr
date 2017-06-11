@@ -28,6 +28,7 @@ export default {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.NormalModuleReplacementPlugin(/\.\/async/, './static'),
     new webpack.HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new webpack.DefinePlugin({

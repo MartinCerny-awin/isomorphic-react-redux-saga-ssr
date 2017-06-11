@@ -3,16 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router';
 
-// Routes
-// For Development only
-import * as RouteMap from 'routes/static';
-
-// This is used in production for code splitting via `wepback.config.server.js`
-// import * as RouteMap from 'routes/async';
-
-// Containers
 import AppContainer from 'containers/App/AppContainer';
-// import PrivateRouteContainer from 'containers/PrivateRoute/PrivateRouteContainer.js';
+import RouteMap from './RouteMap';
 
 const Routes = (props) => {
   const { location } = props;

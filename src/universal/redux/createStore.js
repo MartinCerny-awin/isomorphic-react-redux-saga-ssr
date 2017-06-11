@@ -11,13 +11,11 @@ export default (history, reduxState = undefined) => {
   const router = routerMiddleware(history);
 
   const store = createStore(
-    combineReducers(
-      {
-        ...Reducers,
-        router: routerReducer,
-      },
-      reduxState,
-    ),
+    combineReducers({
+      ...Reducers,
+      router: routerReducer,
+    }),
+    reduxState,
     applyMiddleware(saga, router),
   );
 

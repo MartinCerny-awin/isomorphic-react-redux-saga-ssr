@@ -13,6 +13,8 @@ Renders Pages on the initial for fast page loads and search engine optimization
 *Code Splitting: -*
 Split code into bundles so that code is asynchronously loaded by the client.
 
+The code is influenced by https://medium.com/@apostolos/server-side-rendering-code-splitting-and-hot-reloading-with-react-router-v4-87239cfc172c
+
 ## ⚙ How?
 
 The Basic setup goes like this...

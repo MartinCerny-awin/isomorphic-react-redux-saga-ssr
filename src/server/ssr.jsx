@@ -22,9 +22,13 @@ import Html from 'server/Html';
 function renderApp(url, res, store, assets) {
   const PROD = process.env.NODE_ENV === 'production';
   const Layout = PROD ? require('../../build/prerender.js').default : () => {};
+  const context = {
+    splitPoints: [], // Create an empty array
+  };
+
   const rootComponent = PROD
     ? (<Provider store={store}>
-      <StaticRouter location={url} context={{}}>
+      <StaticRouter location={url} context={context}>
         <Layout />
       </StaticRouter>
     </Provider>)
@@ -34,9 +38,16 @@ function renderApp(url, res, store, assets) {
     // get state from store after sagas were run and strigify it for rendering in HTML
     const state = store.getState();
     const initialState = `window.__INITIAL_STATE__ = ${JSON.stringify(state)}`;
+    const splitPoints = `window.__SPLIT_POINTS__ = ${JSON.stringify(context.splitPoints)}`;
 
     const html = renderToString(
-      <Html initialState={initialState} rootComponent={rootComponent} assets={assets} PROD={PROD} />,
+      <Html
+        PROD={PROD}
+        assets={assets}
+        rootComponent={rootComponent}
+        initialState={initialState}
+        splitPoints={splitPoints}
+      />,
     );
     res.send(`<!DOCTYPE html>${html}`);
   });
