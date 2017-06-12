@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import AlbumsList from './AlbumsList';
-import { actions, selectors } from './reducers';
+import AlbumsList from 'modules/album/components/AlbumsList';
+import { actions, selectors } from 'modules/album/reducers';
 
 const mapStateToProps = state => ({
   albums: selectors.getAlbums(state),

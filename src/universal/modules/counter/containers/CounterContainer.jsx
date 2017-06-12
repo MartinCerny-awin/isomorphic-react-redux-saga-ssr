@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Counter from './Counter';
-import { actions } from './counter';
+import Counter from 'modules/counter/components/Counter';
+import { actions } from 'modules/counter/reducers';
 
 const CounterContainer = props => <Counter {...props} />;
 
@@ -15,6 +15,7 @@ CounterContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   const count = state.counter.get('count');
   return {
     count,

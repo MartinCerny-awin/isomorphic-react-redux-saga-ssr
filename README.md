@@ -85,5 +85,5 @@ This will build all your assets and write them to a `/build` file in the root di
 ## 🗒 Notes
 
 Hot Module Reloading does not work with `System.import`, as such there are two route sources.
-- The first one `src/universal/routes/static.js` is for static routes (no code splitting) that is for the development environment to work nicely with [React Hot Loader 3](https://github.com/gaearon/react-hot-loader)
-- The second route source `src/universal/routes/async.js` is for asynchronous routes (Code splitting using System.import).
+- The first one `src/universal/routes/sync.js` is for static routes (no code splitting) that is for the development environment to work nicely with [React Hot Loader 3](https://github.com/gaearon/react-hot-loader)
+- The second route source `src/universal/routes/async.jsx` is for asynchronous routes (Code splitting using System.import).
