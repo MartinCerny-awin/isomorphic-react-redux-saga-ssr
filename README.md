@@ -57,9 +57,6 @@ Middleware which can be mounted in an express server to serve the latest compila
 ### webpack-hot-middleware
 Alternative to webpack-dev-server but instead of starting a server itself it allows you to mount it in an existing / custom express server alongside webpack-dev-middleware.
 
-### Immutable.js
-Immutable data structures provide us with a cheap way to track changes on objects, which is all we need to implement shouldComponentUpdate. This can provide us with a nice performance boost.
-
 ### Redux Saga
 The implementation of Redux Saga was made with the help of [Universal React Saga](https://github.com/navgarcha/universal-react-saga). The axios library was replaced by fetch and sagas fitting into modules were moved there.
 

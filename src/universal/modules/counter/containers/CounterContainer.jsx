@@ -14,13 +14,9 @@ CounterContainer.propTypes = {
   decrementCount: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  const count = state.counter.get('count');
-  return {
-    count,
-  };
-};
+const mapStateToProps = state => ({
+  count: state.counter.count,
+});
 
 const mapDispatchToProps = dispatch => ({
   ...bindActionCreators(actions, dispatch),

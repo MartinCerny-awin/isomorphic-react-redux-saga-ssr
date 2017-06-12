@@ -1,24 +1,24 @@
-import { Map as iMap } from 'immutable';
-
 export const types = {
   COUNTER_INCREMENT: 'COUNTER_INCREMENT',
   COUNTER_DECREMENT: 'COUNTER_DECREMENT',
 };
 
-const initialState = iMap({
+const initialState = {
   count: 0,
-});
+};
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case types.COUNTER_INCREMENT:
-      return state.merge({
-        count: state.get('count') + 1,
-      });
+      return {
+        ...state,
+        count: state.count + 1,
+      };
     case types.COUNTER_DECREMENT:
-      return state.merge({
-        count: state.get('count') - 1,
-      });
+      return {
+        ...state,
+        count: state.count - 1,
+      };
     default:
       return state;
   }
