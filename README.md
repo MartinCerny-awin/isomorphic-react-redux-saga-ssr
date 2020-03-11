@@ -1,4 +1,6 @@
-# ⚡ Isomorphic JS - Server Side Rendering, Code Splitting and Hot Module Reloading ⚡
+# OUTDATED PLEASE HAVE A LOOK FOR NEWER OPTIONS
+
+##  ⚡ Isomorphic JS - Server Side Rendering, Code Splitting and Hot Module Reloading ⚡
 
 ## 💭 What is it?
 *Isomorphic JS: -*
